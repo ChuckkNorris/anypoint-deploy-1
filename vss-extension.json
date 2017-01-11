@@ -1,48 +1,34 @@
 {
     "manifestVersion": 1,
-    "id": "sample-extension",
-    "version": "0.1.0",
-    "name": "My first sample extension",
-    "description": "A sample Visual Studio Services extension.",
+    "id": "anypoint-deploy",
+    "version": "0.1.7",
+    "name": "AnyPoint Deploy",
+    "description": "Task to deploy to an AnyPoint Cloud instance",
     "publisher": "levifuller",
     "targets": [
         {
             "id": "Microsoft.VisualStudio.Services"
             }
         ],
+    "categories": [
+        "Build and release"
+    ],
     "icons": {
         "default": "images/logo.png"
-        },
+    },
+    "files": [
+        { "path": "deploytask"}
+    ],
     "contributions": [
         {
-            "id": "levifuller.HelloWorld",
-            "type": "ms.vss-web.hub",
-            "description": "Adds a 'Hello' hub to the Work hub group.",
+            "id": "levifuller.AnyPoint",
+            "type": "ms.vss-distributed-task.task",
             "targets": [
-                "ms.vss-work-web.work-hub-group"
-                ],
+                "ms.vss-distributed-task.tasks"
+            ],
             "properties": {
-                "name": "Hello",
-                "order": 99,
-                "uri": "hello-world.html"
+                "name": "deploytask"
             }
-        }s
-    ],
-    "scopes": [
-        "vso.work"
-    ],
-    "files": [
-        {
-            "path": "hello-world.html", "addressable": true
-        },
-        {
-            "path": "scripts", "addressable": true
-        },
-        {
-            "path": "sdk/scripts", "addressable": true
-        },
-        {
-            "path": "images/logo.png", "addressable": true
         }
     ]
 }
