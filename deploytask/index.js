@@ -3,13 +3,6 @@ var path = require('path'),
     shelljs = require('shelljs'),
     fs = require('fs'),
     http = require('https');
-//process.env[""]
-
-// var myPath = task.getInput('samplepathinput');
-
-
-task._writeLine('File Byte Count: ' + zipFile.byteLength);
-task._writeLine('Deploying ' + fileName);
 
 var username = "lfuller941@production";
 var password = task.getVariable('password');
@@ -18,13 +11,14 @@ var applicationName = task.getInput('applicationname', true);
 var folder = task.getPathInput('filepath', true).replace(/\"/g, "");
 var fileName = 'mstest-1.0.0-SNAPSHOT.zip';
 var fullFilePath = path.join(folder, fileName);
-
-
+task._writeLine('Full path: ' + fullFilePath);
 var zipFile = fs.readFileSync(fullFilePath);
 
 var auth = 'Basic ' + new Buffer(username + ':' + password).toString('base64');
 var header = {'Authorization': auth}
 
+task._writeLine('File Byte Count: ' + zipFile.byteLength);
+task._writeLine('Deploying ' + fileName);
 
 var req = http.request({
     method: "POST",
@@ -40,5 +34,6 @@ var req = http.request({
 req.write(zipFile);
 req.end();
 
+// tfx extension create --manifest-globs vss-extension.json
 
     
