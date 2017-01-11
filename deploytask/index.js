@@ -4,8 +4,8 @@ var path = require('path'),
     fs = require('fs'),
     http = require('https');
 
-var environment = task.getInput('environment');
-var username = "lfuller941@" + environment;
+var environment = task.getInput('environment', true);
+var username = task.getInput('username', true) + "@" + environment;
 var password = task.getVariable('password');
 var applicationName = task.getInput('applicationname', true);
 var fileName = task.getInput('filename', true);
