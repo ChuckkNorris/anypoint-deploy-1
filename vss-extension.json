@@ -1,7 +1,7 @@
 {
     "manifestVersion": 1,
     "id": "anypoint-deploy",
-    "version": "0.2.4",
+    "version": "1.0.0",
     "name": "AnyPoint Deploy",
     "description": "Task to deploy to an AnyPoint Cloud instance",
     "publisher": "levifuller",

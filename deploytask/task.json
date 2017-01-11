@@ -7,8 +7,8 @@
     "category": "Utility",
     "author": "Levi Fuller",
     "version": {
-        "Major": 0,
-        "Minor": 1,
+        "Major": 1,
+        "Minor": 0,
         "Patch": 0
     },
     "instanceNameFormat": "Deploying Application to AnyPoint",
