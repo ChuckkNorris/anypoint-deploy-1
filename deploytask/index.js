@@ -4,12 +4,13 @@ var path = require('path'),
     fs = require('fs'),
     http = require('https');
 
-var username = "lfuller941@production";
+var environment = task.getInput('environment');
+var username = "lfuller941@" + environment;
 var password = task.getVariable('password');
 var applicationName = task.getInput('applicationname', true);
-//var fileName = task.getInput('filename', true);
+var fileName = task.getInput('filename', true);
 var folder = task.getPathInput('filepath', true).replace(/\"/g, "");
-var fileName = 'mstest-1.0.0-SNAPSHOT.zip';
+//var fileName = 'mstest-1.0.0-SNAPSHOT.zip';
 var fullFilePath = path.join(folder, fileName);
 task._writeLine('Full path: ' + fullFilePath);
 var zipFile = fs.readFileSync(fullFilePath);

@@ -11,7 +11,7 @@
         "Minor": 1,
         "Patch": 0
     },
-    "instanceNameFormat": "Echo $(samplestring)",
+    "instanceNameFormat": "Deploying Application to AnyPoint",
     "groups": [
         {
             "name": "advanced",
@@ -47,10 +47,15 @@
         {
             "name": "environment",
             "type": "pickList",
-            "label": "File Folder Path",
+            "label": "Environment",
             "defaultValue": "",
             "required": false,
-            "helpMarkDown": "Name of the zip file to deploy"
+            "helpMarkDown": "Environment to deploy to",
+            "options": {
+                "sandbox": "sandbox",
+                "staging": "staging",
+                "production": "production"
+            }
         },
       
         {
