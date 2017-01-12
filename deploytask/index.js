@@ -26,10 +26,19 @@ var req = http.request({
     host: 'anypoint.mulesoft.com',
     path: '/cloudhub/api/applications/'+ applicationName +'/deploy',
     headers: header
-}, function(e){
-    task._writeLine(e.statusCode + ' ' + e.statusMessage + ' - Application Deployed Successfully')
-}).on('error', function(e){
-    task._writeLine(e.name + ' ERROR: ' + e.message)
+}, function(response){
+    var responseMessage = response.statusCode + ' ' + response.statusMessage;
+    if (response.statusCode == 200) {
+        task._writeLine(responseMessage + ' - Application Deployed Successfully')
+    }
+    else {
+        task.setResult(task.TaskResult.Failed, responseMessage);
+    }
+}).on('error', function(error){
+    var responseMessage = error.name + ' ERROR: ' + error.message;
+    task.setResult(task.TaskResult.Failed, responseMessage);
+    // task._writeLine(responseMessage);
+    // throw responseMessage;
 });
 
 req.write(zipFile);
